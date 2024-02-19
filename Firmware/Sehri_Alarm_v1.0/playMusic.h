@@ -4,31 +4,37 @@ DFRobot_MAX98357A amplifier;
 
 String musicList[100];   // SD card music playlist
 
-void configAmplifier(){
-  
+uint16_t musicDurationG = 0;
+uint64_t musicStartingTimeG = 0;
+
+void configAmplifier() {
+
   while ( !amplifier.initI2S(/*_bclk=*/GPIO_NUM_25, /*_lrclk=*/GPIO_NUM_26, /*_din=*/GPIO_NUM_14) ) {
     Serial.println("Initialize I2S failed !");
     delay(3000);
   }
-  
+
   while (!amplifier.initSDCard(/*csPin=*/GPIO_NUM_4)) {
     Serial.println("Initialize SD card failed !");
     delay(3000);
   }
   Serial.println("Initialize succeed!");
-  
+
   amplifier.scanSDMusic(musicList);
   printMusicList();
   amplifier.setVolume(5);
   delay(5000);
 }
 
-void playMusic(String musicFileName){
-  musicFileName = "/" + musicFileName;
-  if (musicFileName.length()) {
-    Serial.println("Changing Music...\n");
-    amplifier.playSDMusic(musicFileName.c_str());
-    Serial.println(amplifier.getMetadata(ESP_AVRC_MD_ATTR_TITLE));
+void playMusic(String musicFileName) {
+  String musicFileName2 = "/" + musicFileName;
+  if (musicFileName2.length()) {
+    Serial.println("Start to play Music...\n");
+    amplifier.playSDMusic(musicFileName2.c_str());
+    musicStartingTimeG = millis();
+    musicDurationG = getDuration(SD, "/musicDuration.txt" , musicFileName);
+    Serial.print("Duration: ");
+    Serial.println(musicDurationG);
   } else {
     Serial.println("The currently selected music file is incorrect!\n");
   }
@@ -58,6 +64,8 @@ void printMusicList(void)
     i++;
   }
 }
+
+
 //void parseSerialCommand(void)
 //{
 //  String cmd;
