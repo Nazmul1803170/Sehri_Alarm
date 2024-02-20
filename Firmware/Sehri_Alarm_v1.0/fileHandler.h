@@ -1,7 +1,4 @@
-#include "SPIFFS.h"
-#include "FS.h"
-#include "SD.h"
-#include "SPI.h"
+
 
 // Initialize SPIFFS
 void initSPIFFS() {

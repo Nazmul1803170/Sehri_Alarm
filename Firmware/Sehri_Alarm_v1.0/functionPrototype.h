@@ -1,3 +1,11 @@
+#include "SPIFFS.h"
+#include "FS.h"
+#include "SD.h"
+#include "SPI.h"
+
+#include <DFRobot_MAX98357A.h>
+
+
 //fileHandler.h
 void initSPIFFS();
 void initSD();

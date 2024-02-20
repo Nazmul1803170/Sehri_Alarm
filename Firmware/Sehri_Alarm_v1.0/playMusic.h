@@ -1,4 +1,3 @@
-#include <DFRobot_MAX98357A.h>
 
 DFRobot_MAX98357A amplifier;
 
