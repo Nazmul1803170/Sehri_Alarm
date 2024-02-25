@@ -16,21 +16,21 @@ void setup() {
   Serial.println("Start");
 
 
-  wdt_disable();
+  
   
   initSD();
 
   configAmplifier();
 
   playMusic(MUSIC_NAME0);
-  delay(5000);
-  playMusic(MUSIC_NAME1);
-  delay(5000);
-  playMusic(MUSIC_NAME2);
-  delay(5000);
-  playMusic(MUSIC_NAME3);
-  delay(5000);
-  //playMusic(MUSIC_NAME4);
+//  delay(5000);
+//  playMusic(MUSIC_NAME1);
+//  delay(5000);
+//  playMusic(MUSIC_NAME2);
+//  delay(5000);
+//  playMusic(MUSIC_NAME3);
+//  delay(5000);
+//  //playMusic(MUSIC_NAME4);
 
 }
 

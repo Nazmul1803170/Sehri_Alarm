@@ -8,7 +8,7 @@ uint64_t musicStartingTimeG = 0;
 
 void configAmplifier() {
 
-  while ( !amplifier.initI2S(/*_bclk=*/GPIO_NUM_25, /*_lrclk=*/GPIO_NUM_26, /*_din=*/GPIO_NUM_14) ) {
+  while ( !amplifier.initI2S(/*_bclk=*/GPIO_NUM_26, /*_lrclk=*/GPIO_NUM_27, /*_din=*/GPIO_NUM_25) ) {
     Serial.println("Initialize I2S failed !");
     delay(3000);
   }

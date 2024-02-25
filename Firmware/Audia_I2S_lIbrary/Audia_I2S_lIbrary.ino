@@ -22,13 +22,14 @@
 #define SPI_SCK       18
  
 // I2S Connections
-#define I2S_DOUT      14
+#define I2S_DOUT      27
 #define I2S_BCLK      25
 #define I2S_LRC       26
  
  // Create Audio object
 Audio audio;
- 
+uint64_t sTime = 0;
+bool s = 0;
 void setup() {
     
     // Set microSD Card CS as OUTPUT and set HIGH
@@ -55,16 +56,25 @@ void setup() {
     audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
     
     // Set Volume
-    audio.setVolume(50);
+    audio.setVolume(15);
     
     // Open music file
-    audio.connecttoFS(SD,"/000xxx.wav");
-    
+    audio.connecttoFS(SD,"/003xxx.wav");
+    sTime = millis();
+    s = 1;
 }
- 
+
 void loop()
 {
+//    while(audio.isRunning()){
+//      
+//    }
+
     audio.loop();
-    Serial.println("In loop");    
-    delay(5);
+    
+    if(millis()-sTime > 20000 && s){
+      delay(5000);
+      audio.connecttoFS(SD,"/003xxx.wav", -1);
+      s = 0;
+    }
 }
