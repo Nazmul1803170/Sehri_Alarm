@@ -1,22 +1,25 @@
 #include "fnPrototype.h"
+#include "settings.h"
+#include "i2sModule.h"
+#include "playAudio.h"
+#include "rtcModule.h"
 
-// Testing purpose
-String audioFiles[] = {"/000xxx.wav","/001xxx.wav","/002xxx.wav","/003xxx.wav"};
-
-
-void setup(){
+void setup() {
   Serial.begin(115200);
   Serial.println("Start");
 
+  configRTC();
+  rtcAdjust();
   initSD();
   configI2S();
 
-  for(int i=0;i<4;i++){
-    Serial.println(audioFiles[i]);
-  }
+  playMainAudio("3_50");
+  delay(1000);
+  playMainAudio("3_51");
 }
-int i=0;
-void loop(){
-  playAudio(audioFiles[i]);
-  i++;
+
+void loop() {
+
+  Serial.println(getCurrentTime());
+  delay(1000);
 }
