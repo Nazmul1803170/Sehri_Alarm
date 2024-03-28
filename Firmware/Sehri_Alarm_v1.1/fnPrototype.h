@@ -1,5 +1,8 @@
 // Global Variable
-String currentDate = "26_3";
+String currentDate = "";
+String sahriEndTime = "";
+String announceStartTime = "";
+bool isAnnounceStart = false;
 
 //palyAudio.h
 void initSD();

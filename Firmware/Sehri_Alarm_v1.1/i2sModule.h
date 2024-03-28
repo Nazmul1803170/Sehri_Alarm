@@ -40,6 +40,7 @@ void playAudio(String audioName) {
   Serial.print("Audio name: ");
   Serial.println(audioName);
   while (audio.isRunning()) {
+    detectPowerSource();
     audio.loop();
   }
   Serial.println("End to play audio.");

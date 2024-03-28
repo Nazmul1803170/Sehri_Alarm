@@ -14,3 +14,7 @@ void playMainAudio(String currentTime){
   playAudio(setPath);
   playAudio(ENDING_PATH);
 }
+
+void playStartingAudio(){
+  playAudio(String(GAJAL_DIR) + "1.mp3");
+}
