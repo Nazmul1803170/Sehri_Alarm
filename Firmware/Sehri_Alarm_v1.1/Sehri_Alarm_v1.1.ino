@@ -12,14 +12,14 @@ void setup() {
 
   configRelay();
   configRTC();
-  //rtcAdjust();
+  rtcAdjust();
   initSD();
   configI2S();
 
   currentDate = getCurrentDate();
   currentDate = "28_3";
   sahriEndTime = getSahriEndTime(currentDate);
-  announceStartTime = "01_10";  // Need to calculate from 1 hr ago from sahri end
+  announceStartTime = "10_55";  // Need to calculate from 1 hr ago from sahri end
   Serial.print("Sahri End Time: ");
   Serial.println(sahriEndTime);
 
@@ -35,7 +35,7 @@ void setup() {
   delay(500);
 
 
-
+  playStartingAudio();
 }
 
 void loop() {
